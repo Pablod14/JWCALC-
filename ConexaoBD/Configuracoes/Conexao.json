@@ -1,0 +1,12 @@
+{
+  "Server": "AMDFX-PC",
+  "IntegratedSecurity": 1,
+  "ConnectTimeout": 30,
+  "Encrypt": 0,
+  "TrustServerCertificate": 0,
+  "ApplicationIntent": "ReadWrite",
+  "MultiSubnetFailover": 0,
+  "Database": "JWCALC",
+  "User": "JWCALC",
+  "Password": "123456"
+}
