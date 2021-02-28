@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Negocios.EntityFramework.TIPORECIBO>
+
+@{
+    ViewBag.Title = "TipoRecibosVM";
+}
+
+<h2>TipoRecibosVM</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TIPID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TIPCOD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TIPDESC)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TIPID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TIPCOD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TIPDESC)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

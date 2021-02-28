@@ -52,7 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseTransacoes.cs" />
+    <Compile Include="DAL\DAL_TipoRecibos .cs" />
     <Compile Include="DAL\DAL_Donativos.cs" />
+    <Compile Include="IDALBaseCRUDEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

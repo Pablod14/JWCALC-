@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace JWCalc.Models
 {
-    public enum TipoRecibo
+    public enum TipoDeRecibo
     {
         NaoDefinido = 0,
         Donativo,
@@ -26,7 +26,7 @@ namespace JWCalc.Models
     {
         public DateTime Data { get; set; }
 
-        public TipoRecibo Tipo { get; set; }
+        public TipoDeRecibo Tipo { get; set; }
 
         public List<Donativo> EntradasDonativos { get; set; }
 

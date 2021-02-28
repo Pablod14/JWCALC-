@@ -3,6 +3,9 @@ using System.Web.Optimization;
 
 namespace JWCalc
 {
+    /// <summary>
+    /// Classe que armazena os scripts/css da aplicação
+    /// </summary>
     public class BundleConfig
     {
         // Para obter mais informações sobre o agrupamento, visite https://go.microsoft.com/fwlink/?LinkId=301862

@@ -1,5 +1,6 @@
 ﻿using Negocios.EntityFramework;
 using Negocios.Regras;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace JWCalc.Controllers
@@ -8,32 +9,28 @@ namespace JWCalc.Controllers
     {
         public ActionResult Index()
         {
-            TIPODONATIVO tpDonativo = new TIPODONATIVO { TIPCOD = 1, TIPDESC = "Teste", TIPID = 1 };
-
-            DONATIVO donativoModelo = new DONATIVO() { DONID = 0, DONTIPO = 1, DONVALOR = 500, TIPODONATIVO = tpDonativo };
-            DAL_Donativos donativos = new DAL_Donativos();
-            donativos.AdicionarRegistro(donativoModelo);
-
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult DonativoVM()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult TipoRecibosVM()
         {
-            ViewBag.Message = "Your contact page.";
+            return View(new DAL_TipoRecibos().ConsultarRegistros());
+        }
 
+        public ActionResult CadTipoRecibosVM()
+        {
             return View();
         }
 
-        public ActionResult IncluirRecibo()
+        [HttpPost]
+        public void CadastrarTipoRecibo(TIPORECIBO pTipoRecibo)
         {
-            return View();
+            new DAL_TipoRecibos().AdicionarRegistro(pTipoRecibo);
         }
     }
 }
