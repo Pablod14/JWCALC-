@@ -21,19 +21,19 @@ namespace Negocios.ConexaoBD
         /// </summary>
         /// <param name="pTimeOut">TimeOut da Conexao.</param>
         /// <param name="pMontarConexaoConstrutor">Indica se a string de conexão deve ser montada pelo construtor.</param>
-        public Conexao(int pTimeOut, bool pMontarConexaoConstrutor)
+        public Conexao(string pNomeDataBase, int pTimeOut, bool pMontarConexaoConstrutor)
         {
             if (pMontarConexaoConstrutor)
-                this.MontarConexao(pTimeOut);
+                this.MontarConexao(pNomeDataBase, pTimeOut);
         }
 
         /// <summary>
         /// Retorna a String de Conexão
         /// </summary>
         /// <param name="pTimeOut">TimeOut da Conexao.</param>
-        private void MontarConexao(int pTimeOut)
+        private void MontarConexao(string pNomeDataBase, int pTimeOut)
         {
-            conexao = new SqlConnection(new ConnectionString_ADO(pTimeOut).RetornaStringConexao<ConnectionString_ADO>());
+            conexao = new SqlConnection(new ConnectionString_ADO(pNomeDataBase, pTimeOut).RetornaStringConexao());
 
             if (conexao.State == ConnectionState.Open)
                 conexao.Close();

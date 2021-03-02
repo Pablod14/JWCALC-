@@ -1,4 +1,4 @@
-﻿using Negocios.EntityFramework;
+﻿using Negocios.EntityFramework.DML.ACESSOS;
 using System;
 
 namespace Negocios
@@ -9,16 +9,16 @@ namespace Negocios
     public class IDALBaseCRUDEntity : IDisposable
     {
         #region Campos
-        internal Entities baseDeDados;
+        internal readonly BaseACESSOS baseDeDados;
         #endregion
 
         /// <summary>
         /// Construtor
         /// </summary>
-        public IDALBaseCRUDEntity()
+        public IDALBaseCRUDEntity(string pNomeBase)
         {
             if (baseDeDados == null)
-                baseDeDados = new Entities();
+                baseDeDados = new BaseACESSOS(pNomeBase);
         }
 
         /// <summary>

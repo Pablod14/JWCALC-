@@ -33,14 +33,7 @@ namespace Negocios.ConexaoBD
         #region Campos
 
         internal int TimeOut = 0;
-        private readonly List<string> CamposFixosEntytiFramework = new List<string> { "Metadata", "Provider" }; 
-
-        #endregion
-
-        #region Constantes
-
-        private const string C_TIPOCONEXAOENTYTI = "EntityFramework";
-        private const string C_TIPOCONEXAOADO = "ADO";
+        internal string NomeBancoDeDados;
 
         #endregion
 
@@ -48,8 +41,9 @@ namespace Negocios.ConexaoBD
         /// Construtor da Classe
         /// </summary>
         /// <param name="pTimeOut">TimeOut da Conexao</param>
-        public BaseConnectionString(int pTimeOut = 30)
+        public BaseConnectionString(string pNomeDataBase, int pTimeOut = 30)
         {
+            this.NomeBancoDeDados = pNomeDataBase;
             this.TimeOut = pTimeOut;
         }
 
@@ -58,23 +52,16 @@ namespace Negocios.ConexaoBD
         /// </summary>
         /// <typeparam name="T">Tipo ConnectionString_ADO ou ConnectionString_EntityFramework</typeparam>
         /// <returns>String de conexão em texto</returns>
-        public string RetornaStringConexao<T>()
+        public string RetornaStringConexao()
         {
-            T jsonString;
-            string tipoConexao = string.Empty, 
-                                 ProviderConnectionString = string.Empty, 
-                                 stringDeConexao = string.Empty ;
-
-            //Definindo o tipo de conexão
-            if (typeof(T).Equals(typeof(ConnectionString_ADO)))
-                tipoConexao = C_TIPOCONEXAOADO;
-            else if (typeof(T).Equals(typeof(ConnectionString_EntityFramework)))
-                tipoConexao = C_TIPOCONEXAOENTYTI;
+            ConnectionString_ADO jsonString;
+            string ProviderConnectionString = string.Empty,
+                   stringDeConexao = string.Empty;
 
             //Carregando arquivo JSON com os dados da conexão
-            using (StreamReader file = File.OpenText(ConfigurationManager.ConnectionStrings[tipoConexao].ConnectionString))
+            using (StreamReader file = File.OpenText(ConfigurationManager.ConnectionStrings["ADO"].ConnectionString))
             {
-                jsonString = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(file.ReadToEnd());
+                jsonString = Newtonsoft.Json.JsonConvert.DeserializeObject<ConnectionString_ADO>(file.ReadToEnd());
                 file.Close();
             }
 
@@ -84,25 +71,28 @@ namespace Negocios.ConexaoBD
 
             foreach (PropertyInfo item in propriedades.Where(x => x != null))
             {
-                //Setando valor do TimeOut
-                if (item.Name == "ConnectTimeout")
-                    item.SetValue(jsonString, TimeOut);
 
-                if (tipoConexao == C_TIPOCONEXAOENTYTI && !CamposFixosEntytiFramework.Any(x => x == item.Name))
-                    ProviderConnectionString += $"{item.GetCustomAttribute<DisplayAttribute>().Name} = {item.GetValue(jsonString)};";
-                else
+                switch (item.Name)
                 {
-                    string chaveAtual = $"{item.GetCustomAttribute<DisplayAttribute>().Name} = {item.GetValue(jsonString)}";
-
-                    if (!camposStringConexao.Contains(chaveAtual))
-                        camposStringConexao.Add(chaveAtual);
+                    //Setando valor do TimeOut
+                    case "ConnectTimeout":
+                        item.SetValue(jsonString, TimeOut);
+                        break;
+                    case "Database":
+                        if (!string.IsNullOrWhiteSpace(NomeBancoDeDados))
+                            item.SetValue(jsonString, NomeBancoDeDados);
+                        break;
+                    default:
+                        break;
                 }
+
+                string chaveAtual = $"{item.GetCustomAttribute<DisplayAttribute>().Name} = {item.GetValue(jsonString)}";
+
+                if (!camposStringConexao.Contains(chaveAtual))
+                    camposStringConexao.Add(chaveAtual);
             }
 
-            if (tipoConexao == C_TIPOCONEXAOENTYTI)
-                stringDeConexao = $"{string.Join(";", camposStringConexao)};Provider Connection String = '{ProviderConnectionString}'";
-            else
-                stringDeConexao = string.Join(";", camposStringConexao);
+            stringDeConexao = string.Join(";", camposStringConexao);
 
             return stringDeConexao;
         }
@@ -119,7 +109,7 @@ namespace Negocios.ConexaoBD
         public string Server { get; set; }
 
         [Display(Name = "Database")]
-        public string Database { get; set; }        
+        public string Database { get; set; }
 
         [Display(Name = "TrustServerCertificate")]
         public bool TrustServerCertificate { get; set; }
@@ -134,10 +124,10 @@ namespace Negocios.ConexaoBD
         /// <summary>
         /// Construtor da classe
         /// </summary>
+        /// <param name="pNomeDataBase">Nome da Base de Dados</param>
         /// <param name="pTimeout">TimeOut da Conexao</param>
-        public ConnectionString_ADO(int pTimeout = 30)
+        public ConnectionString_ADO(string pNomeDataBase, int pTimeout = 30) : base(pNomeDataBase, pTimeout)
         {
-            base.TimeOut = pTimeout;
         }
     }
 
@@ -164,16 +154,15 @@ namespace Negocios.ConexaoBD
         public bool MultipleActiveResultSets { get; set; }
 
         [Display(Name = "App")]
-        public string App { get; set; } 
+        public string App { get; set; }
         #endregion
 
         /// <summary>
         /// Construtor da Classe
         /// </summary>
         /// <param name="pTimeout">TimeOut da Conexao</param>
-        public ConnectionString_EntityFramework(int pTimeout = 30)
+        public ConnectionString_EntityFramework(string pNomeDataBase, int pTimeout = 30) : base(pNomeDataBase, pTimeout)
         {
-            base.TimeOut = pTimeout;
         }
     }
 }

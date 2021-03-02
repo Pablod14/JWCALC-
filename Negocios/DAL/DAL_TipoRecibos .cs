@@ -1,4 +1,4 @@
-﻿using Negocios.EntityFramework;
+﻿using Negocios.EntityFramework.DML.JWCALC;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,8 +8,17 @@ namespace Negocios.Regras
     /// <summary>
     /// Classe para manipulação de dados da Entidade Donativos
     /// </summary>
-    public class DAL_TipoRecibos : IDALBaseCRUDEntity
+    public class DAL_TipoRecibos
     {
+        #region Campos
+        internal readonly BaseJWCALC baseDeDados;
+        #endregion
+
+        public DAL_TipoRecibos()
+        {
+            baseDeDados = new BaseJWCALC("JWCALC");
+        }
+
         /// <summary>
         /// Adicionar Donativo
         /// </summary>

@@ -10,8 +10,13 @@ namespace Negocios.Regras
     internal class BaseTransacoes
     {
         #region Campos
-        private readonly TransacoesBD transacoes = new TransacoesBD();
+        private readonly TransacoesBD transacoes;
         #endregion
+
+        public BaseTransacoes(string pNomeDataBase, int pTimeout = 30, bool pMontarConexaoConstrutor = true)
+        {
+            transacoes = new TransacoesBD(pNomeDataBase, pTimeout, pMontarConexaoConstrutor);
+        }
 
         /// <summary>
         /// Indica o uso de Commit/Roolback na transação

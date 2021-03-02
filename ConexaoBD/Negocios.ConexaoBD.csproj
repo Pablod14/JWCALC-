@@ -52,7 +52,6 @@
     <Compile Include="TransacoesBD.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Configuracoes\Conexao_ef.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

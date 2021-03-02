@@ -1,6 +1,5 @@
-﻿using Negocios.EntityFramework;
+﻿using Negocios.EntityFramework.DML.JWCALC;
 using Negocios.Regras;
-using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace JWCalc.Controllers

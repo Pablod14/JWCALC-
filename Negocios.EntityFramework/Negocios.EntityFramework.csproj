@@ -53,59 +53,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseDeDadosEF.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BaseDeDadosEF.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BaseDeDadosEF.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BaseDeDadosEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BaseDeDadosEF.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BaseDeDadosEF.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="DONATIVO.cs">
-      <DependentUpon>BaseDeDadosEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ENTRADASDONATIVO.cs">
-      <DependentUpon>BaseDeDadosEF.tt</DependentUpon>
-    </Compile>
+    <Compile Include="DML.ACESSOS\BaseACESSOS.cs" />
+    <Compile Include="DML.ACESSOS\USUARIOS.cs" />
+    <Compile Include="DML.JWCALC\DONATIVO.cs" />
+    <Compile Include="DML.JWCALC\ENTRADASDONATIVO.cs" />
+    <Compile Include="DML.JWCALC\RECIBO.cs" />
+    <Compile Include="DML.JWCALC\TIPODONATIVO.cs" />
+    <Compile Include="DML.JWCALC\TIPORECIBO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RECIBO.cs">
-      <DependentUpon>BaseDeDadosEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TIPODONATIVO.cs">
-      <DependentUpon>BaseDeDadosEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TIPORECIBO.cs">
-      <DependentUpon>BaseDeDadosEF.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <EntityDeploy Include="BaseDeDadosEF.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BaseDeDadosEF.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="BaseDeDadosEF.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BaseDeDadosEF.edmx</DependentUpon>
-      <LastGenOutput>BaseDeDadosEF.Context.cs</LastGenOutput>
-    </None>
-    <None Include="BaseDeDadosEF.edmx.diagram">
-      <DependentUpon>BaseDeDadosEF.edmx</DependentUpon>
-    </None>
-    <None Include="BaseDeDadosEF.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BaseDeDadosEF.edmx</DependentUpon>
-      <LastGenOutput>BaseDeDadosEF.cs</LastGenOutput>
-    </None>
+    <Compile Include="DML.JWCALC\BaseJWCALC.cs" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -117,6 +78,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

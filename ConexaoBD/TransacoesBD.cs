@@ -11,6 +11,7 @@ namespace Negocios.ConexaoBD
         #region Campos
         private readonly Conexao conexao;
         private readonly int TimeOut;
+        private readonly string NomeDataBase;
         #endregion
 
         /// <summary>
@@ -18,10 +19,11 @@ namespace Negocios.ConexaoBD
         /// </summary>
         /// <param name="pTimeout">TimeOut da Conexao</param>
         /// <param name="pMontarConexaoConstrutor">Indica se a string de conexão deve ser montada pelo construtor</param>
-        public TransacoesBD(int pTimeout = 30, bool pMontarConexaoConstrutor = true)
+        public TransacoesBD(string pNomeDataBase, int pTimeout = 30, bool pMontarConexaoConstrutor = true)
         {
+            NomeDataBase = pNomeDataBase;
             TimeOut = pTimeout;
-            conexao = new Conexao(TimeOut, pMontarConexaoConstrutor);
+            conexao = new Conexao(pNomeDataBase, TimeOut, pMontarConexaoConstrutor);
         }
 
         /// <summary>
@@ -29,9 +31,9 @@ namespace Negocios.ConexaoBD
         /// </summary>
         /// <typeparam name="T">Tipo ConnectionString_ADO ou ConnectionString_EntityFramework.</typeparam>
         /// <returns>String de Conexão</returns>
-        public string StringDeConexao<T>()
+        public string StringDeConexao()
         {
-            return new BaseConnectionString(TimeOut).RetornaStringConexao<T>();
+            return new BaseConnectionString(NomeDataBase, TimeOut).RetornaStringConexao();
         }
 
         /// <summary>
