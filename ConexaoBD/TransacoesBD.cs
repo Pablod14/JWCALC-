@@ -29,11 +29,11 @@ namespace Negocios.ConexaoBD
         /// <summary>
         /// Retornar a String de Conexão
         /// </summary>
-        /// <typeparam name="T">Tipo ConnectionString_ADO ou ConnectionString_EntityFramework.</typeparam>
+        /// <typeparam name="T">Tipo ConnectionStringModelo ou ConnectionString_EntityFramework.</typeparam>
         /// <returns>String de Conexão</returns>
         public string StringDeConexao()
         {
-            return new BaseConnectionString(NomeDataBase, TimeOut).RetornaStringConexao();
+            return new ConnectionString(NomeDataBase, TimeOut).RetornaStringConexao();
         }
 
         /// <summary>

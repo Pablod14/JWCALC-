@@ -33,7 +33,7 @@ namespace Negocios.ConexaoBD
         /// <param name="pTimeOut">TimeOut da Conexao.</param>
         private void MontarConexao(string pNomeDataBase, int pTimeOut)
         {
-            conexao = new SqlConnection(new ConnectionString_ADO(pNomeDataBase, pTimeOut).RetornaStringConexao());
+            conexao = new SqlConnection(new ConnectionString(pNomeDataBase, pTimeOut).RetornaStringConexao());
 
             if (conexao.State == ConnectionState.Open)
                 conexao.Close();

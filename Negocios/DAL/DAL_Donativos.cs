@@ -15,7 +15,7 @@ namespace Negocios.Regras
 
         public DAL_Donativos()
         {
-            baseDeDados = new BaseJWCALC("JWCALC");
+            baseDeDados = new BaseJWCALC();
         }
 
         /// <summary>

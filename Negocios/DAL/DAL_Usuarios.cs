@@ -11,7 +11,7 @@ namespace Negocios.DAL
 
         public DAL_Usuarios()
         {
-            baseDeDados = new BaseACESSOS("ACESSOS");
+            baseDeDados = new BaseACESSOS();
         }
 
         public void AdicionarRegistro(USUARIOS usuarios)

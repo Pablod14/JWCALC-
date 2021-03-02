@@ -16,7 +16,7 @@ namespace Negocios.Regras
 
         public DAL_TipoRecibos()
         {
-            baseDeDados = new BaseJWCALC("JWCALC");
+            baseDeDados = new BaseJWCALC();
         }
 
         /// <summary>

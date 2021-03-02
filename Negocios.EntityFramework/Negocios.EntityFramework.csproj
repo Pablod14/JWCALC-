@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="DML.ACESSOS\BaseACESSOS.cs" />
     <Compile Include="DML.ACESSOS\USUARIOS.cs" />
+    <Compile Include="CONSTANTES.cs" />
     <Compile Include="DML.JWCALC\DONATIVO.cs" />
     <Compile Include="DML.JWCALC\ENTRADASDONATIVO.cs" />
     <Compile Include="DML.JWCALC\RECIBO.cs" />

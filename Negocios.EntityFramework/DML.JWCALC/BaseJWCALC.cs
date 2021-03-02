@@ -8,8 +8,8 @@ namespace Negocios.EntityFramework.DML.JWCALC
 {
     public class BaseJWCALC : DbContext
     {
-        public BaseJWCALC(string pNomeDataBase, int pTimeOut = 30)
-            : base(new TransacoesBD(pNomeDataBase, pTimeOut, false).StringDeConexao())
+        public BaseJWCALC(int pTimeOut = 30)
+            : base(new TransacoesBD(CONSTANTES.C_JWCALC, pTimeOut, false).StringDeConexao())
         {
         }
 

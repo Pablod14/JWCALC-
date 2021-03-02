@@ -14,7 +14,13 @@ namespace JWCalc.Controllers
 
         public void CadUsuario(USUARIOS usuario)
         {
-            new DAL_Usuarios().AdicionarRegistro(usuario);
+            if (ModelState.IsValid)
+            {
+                usuario.USUULTLOGIN = System.DateTime.Now;
+                new DAL_Usuarios().AdicionarRegistro(usuario);
+            }
+
+            RedirectToAction("Index", "Home");
         }
     }
 }

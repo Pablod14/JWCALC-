@@ -6,8 +6,8 @@ namespace Negocios.EntityFramework.DML.ACESSOS
 {
     public class BaseACESSOS : DbContext
     {
-        public BaseACESSOS(string pNomeDataBase, int pTimeOut = 30)
-            : base(new TransacoesBD(pNomeDataBase, pTimeOut, false).StringDeConexao())
+        public BaseACESSOS(int pTimeOut = 30)
+            : base(new TransacoesBD(CONSTANTES.C_ACESSOS, pTimeOut, false).StringDeConexao())
         {
         }
 
