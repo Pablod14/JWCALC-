@@ -6,9 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>@ViewBag.Title JWCALC - Assistente para Gerenciamento das Contas da Congregação</title>
     <link rel="icon" href="~/Imagens/Logo.png">
-
     @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @RenderSection("scripts", required: false)
 </head>
 <body>
 
@@ -20,10 +23,6 @@
         <footer>
             <p>&copy; @DateTime.Now.Year - Pablo Matos de Souza</p>
         </footer>
-    </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    </div>    
 </body>
 </html>

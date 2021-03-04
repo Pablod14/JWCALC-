@@ -33,12 +33,19 @@ namespace Negocios.DAL
         {
             if (usuario != null && !string.IsNullOrEmpty(usuario?.USUNOME))
             {
-                USUARIOS usuarioLogin = (from u in baseDeDados.USUARIOS where u.USUNOME == usuario.USUNOME && u.USUSENHA == usuario.USUSENHA select u).FirstOrDefault();
+                USUARIOS usuarioLogin = (from u in baseDeDados.USUARIOS 
+                                         where u.USUNOME.ToUpper() == usuario.USUNOME.ToUpper() && u.USUSENHA.ToUpper() == usuario.USUSENHA.ToUpper()
+                                         select u).FirstOrDefault();
 
                 return usuarioLogin != null;
             }
             else
                 return false;
+        }
+
+        public bool VerificaUsuarioExistente(string pNomeUsuario)
+        {
+            return !baseDeDados.USUARIOS.All(x => x.USUNOME.ToUpper() != pNomeUsuario.ToUpper());
         }
     }
 }
