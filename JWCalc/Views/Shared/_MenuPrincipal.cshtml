@@ -1,0 +1,62 @@
+﻿@{
+    Layout = null;
+}
+
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+    <a class="navbar-brand mr-auto mr-lg-0" href="@Url.Action("Index", "Home")">
+        JWCalc
+        @*<img src="~/Imagens/Logo.png" width="30" height="30" class="d-inline-block align-top" alt="JWCALC - Assistente para Gerenciamento das Contas da Congregação">*@
+    </a>
+    <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                @Html.ActionLink("Donativos e Comprovantes", "Index", "Home", new { area = "" }, new { @class = "nav-link" })<span class="sr-only">(Página atual)</span>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Recibos</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    @Html.ActionLink("Incluir Recibo (S-24)", "CadTipoRecibosVM", "Home", new { area = "" }, new { @class = "dropdown-item" })
+                    <hr />
+                    @Html.ActionLink("Localizar Recibo de Donativo", "CadTipoRecibosVM", "Home", new { area = "" }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("Novo Tipo de Recibo", "CadTipoRecibosVM", "Home", new { area = "" }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("Visualizar Todos os Tipos de Recibo", "TipoRecibosVM", "Home", new { area = "" }, new { @class = "dropdown-item" })
+                    <hr />
+                    @Html.ActionLink("Cartas de Agradecimento", "CadTipoRecibosVM", "Home", new { area = "" }, new { @class = "dropdown-item" })
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Extratos</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    @Html.ActionLink("Extrato da Conta da Congregação", "CadTipoRecibosVM", "Home", new { area = "" }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("Extrato dos Fundos em Betel ou de outra conta", "CadTipoRecibosVM", "Home", new { area = "" }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("Exibir valores detalhados", "CadTipoRecibosVM", "Home", new { area = "" }, new { @class = "dropdown-item" })
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formulários</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    @Html.ActionLink("Folha de Contas (2-26)", "CadTipoRecibosVM", "Home", new { area = "" }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("Relatório Mensal de Contas (S-30)", "CadTipoRecibosVM", "Home", new { area = "" }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("Registro de Transferência de Fundos (TO-62)", "CadTipoRecibosVM", "Home", new { area = "" }, new { @class = "dropdown-item" })
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Auditorias</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    @Html.ActionLink("Confirmar valores após o fechamento", "CadTipoRecibosVM", "Home", new { area = "" }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("Verificar agenda de auditoria", "CadTipoRecibosVM", "Home", new { area = "" }, new { @class = "dropdown-item" })
+                </div>
+            </li>
+        </ul>
+
+        @*Barra de Pesquisa*@
+        @*<form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Pesquisa" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+        </form>*@
+    </div>
+</nav>

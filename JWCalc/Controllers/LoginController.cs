@@ -12,15 +12,17 @@ namespace JWCalc.Controllers
             return View();
         }
 
-        public void CadUsuario(USUARIOS usuario)
+        public ActionResult ValidaLogin(USUARIOS usuario)
         {
-            if (ModelState.IsValid)
-            {
-                usuario.USUULTLOGIN = System.DateTime.Now;
-                new DAL_Usuarios().AdicionarRegistro(usuario);
-            }
+            bool usuarioValido = false;
 
-            RedirectToAction("Index", "Home");
+            if (ModelState.IsValid)
+                usuarioValido = new DAL_Usuarios().ValidaUsuarioLogin(usuario);
+
+            if (usuarioValido)
+                return RedirectToAction("Index", "Home");
+            else
+                return View("Index");
         }
     }
 }

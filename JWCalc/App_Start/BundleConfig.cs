@@ -28,6 +28,12 @@ namespace JWCalc
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            //Específico para o login
+            bundles.Add(new StyleBundle("~/Content/login").Include(
+                      "~/Content/bootstrap.css",
+                      "~/Content/site.css",
+                      "~/Content/login.css"));
         }
     }
 }

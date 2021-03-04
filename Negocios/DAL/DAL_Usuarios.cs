@@ -28,5 +28,17 @@ namespace Negocios.DAL
 
             baseDeDados.SaveChanges();
         }
+
+        public bool ValidaUsuarioLogin(USUARIOS usuario)
+        {
+            if (usuario != null && !string.IsNullOrEmpty(usuario?.USUNOME))
+            {
+                USUARIOS usuarioLogin = (from u in baseDeDados.USUARIOS where u.USUNOME == usuario.USUNOME && u.USUSENHA == usuario.USUSENHA select u).FirstOrDefault();
+
+                return usuarioLogin != null;
+            }
+            else
+                return false;
+        }
     }
 }
