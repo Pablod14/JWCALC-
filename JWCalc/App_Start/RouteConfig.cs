@@ -13,6 +13,20 @@ namespace JWCalc
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //Criar rota amigável para a folha de contas
+            //routes.MapRoute(
+            //    name: "Folha de Contas",
+            //    url: "FolhaContas/{ano}-{mes}/S-26",
+            //    defaults: new { controller = "Donativos", action = "Index", id = UrlParameter.Optional }
+            //);
+
+
+            //routes.MapRoute(
+            //    name: "Home",
+            //    url: "Home/",
+            //    defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            //);
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

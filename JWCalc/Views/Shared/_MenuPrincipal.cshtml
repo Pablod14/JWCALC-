@@ -14,18 +14,18 @@
     <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                @Html.ActionLink("Donativos e Comprovantes", "Index", "Home", new { area = "" }, new { @class = "nav-link" })<span class="sr-only">(Página atual)</span>
+                @Html.ActionLink("Donativos e Comprovantes", "Index", "Donativos", new { area = "Donativos" }, new { @class = "nav-link" })<span class="sr-only">(Página atual)</span>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Recibos</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
-                    @Html.ActionLink("Incluir Recibo (S-24)", "CadTipoRecibosVM", "Home", new { area = "" }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("Incluir Recibo (S-24)", "CadTipoRecibosVM", "Home", new { area = "Recibos" }, new { @class = "dropdown-item" })
                     <hr />
-                    @Html.ActionLink("Localizar Recibo de Donativo", "CadTipoRecibosVM", "Home", new { area = "" }, new { @class = "dropdown-item" })
-                    @Html.ActionLink("Novo Tipo de Recibo", "CadTipoRecibosVM", "Home", new { area = "" }, new { @class = "dropdown-item" })
-                    @Html.ActionLink("Visualizar Todos os Tipos de Recibo", "TipoRecibosVM", "Home", new { area = "" }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("Localizar Recibo de Donativo", "CadTipoRecibosVM", "Home", new { area = "Recibos" }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("Novo Tipo de Recibo", "CadTipoRecibosVM", "Home", new { area = "Recibos" }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("Visualizar Todos os Tipos de Recibo", "TipoRecibosVM", "Home", new { area = "Recibos" }, new { @class = "dropdown-item" })
                     <hr />
-                    @Html.ActionLink("Cartas de Agradecimento", "CadTipoRecibosVM", "Home", new { area = "" }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("Cartas de Agradecimento", "CadTipoRecibosVM", "Home", new { area = "Recibos" }, new { @class = "dropdown-item" })
                 </div>
             </li>
             <li class="nav-item dropdown">
